@@ -1,5 +1,7 @@
 <h1> <%= @band.name %> </h1>
 
+<%= button_to "Edit", edit_band_url(@band), method: :get %>
+
 <p> List of Albums </p>
 
 <%= button_to "Add an Album", new_band_album_url(@band), method: :get %>

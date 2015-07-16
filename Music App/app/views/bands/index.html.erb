@@ -1,0 +1,8 @@
+<h1> All da Bandz </h1>
+
+<ul>
+  <% @bands.each do |band| %>
+  <li> <%= link_to band.name, band_url(band) %> </li>
+  <br>
+  <% end %>
+</ul>

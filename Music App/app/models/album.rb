@@ -7,10 +7,12 @@
 #  band_id    :integer          not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  style      :string           not null
 #
 
 class Album < ActiveRecord::Base
   validates :band_id, :title, presence: true
+  validates :style, inclusion: ["STUDIO", "LIVE"]
 
   belongs_to :band
   has_many :tracks, dependent: :destroy

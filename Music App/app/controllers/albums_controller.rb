@@ -27,7 +27,8 @@ class AlbumsController < ApplicationController
 
   def edit
     @album = Album.find_by(id: params[:id])
-
+    @band_id = @album.band_id
+    @bands = Band.all
     render :edit
   end
 
@@ -37,6 +38,8 @@ class AlbumsController < ApplicationController
     if @album.update(album_params)
       redirect_to album_url(@album)
     else
+      @band_id ||= @album.band_id
+      @bands ||= Band.all
       flash.now[errors] = @album.errors.full_messages
       render :edit
     end

@@ -15,7 +15,6 @@ class TracksController < ApplicationController
   def create
     @track = Track.new(track_params)
 
-
     if @track.valid?
       @track.save
       redirect_to track_url(@track)
@@ -23,6 +22,26 @@ class TracksController < ApplicationController
       flash.now[:errors] = @track.errors.full_messages
       @albums ||= Album.all
       render :new
+    end
+  end
+
+  def edit
+    @track = Track.find_by(id: params[:id])
+    @album_id = @track.album_id
+    @albums = Album.all
+    render :edit
+  end
+
+  def update
+    @track = Track.find_by(id: params[:id])
+
+    if @track.update(track_params)
+      redirect_to track_url(@track)
+    else
+      @album_id ||= @track.album_id
+      @albums ||= Album.all
+      flash.now[errors] = @track.errors.full_messages
+      render :edit
     end
   end
 

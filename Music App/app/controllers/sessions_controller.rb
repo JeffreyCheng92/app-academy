@@ -1,18 +1,18 @@
 class SessionsController < ApplicationController
-
   def new
     render :new
   end
 
   def create
-    current_user.reset_session_token
-    session[:session_token] = current_user[:session_token]
-    redirect_to user_url(current_user)
+    user = User.find_by_credentials(params[:user][:email],
+                                    params[:user][:password])
+    log_in!(user)          
+    redirect_to user_url(user)
   end
 
   def destroy
-    current_user.reset_session_tokeng
-    session[session_token] = nil
+    log_out!(current_user)
+    redirect_to new_session_url
   end
 
 end

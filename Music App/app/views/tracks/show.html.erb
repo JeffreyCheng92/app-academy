@@ -1,0 +1,9 @@
+<h1> <%= @track.name %> </h1>
+
+<p> Lyrics </p>
+
+
+
+
+<%= button_to "DELETE TRACK!?", track_url(@track), method: :delete %>
+<%= button_to "Back", album_url(@track.album_id), method: :get %>

@@ -31,12 +31,11 @@ class User < ActiveRecord::Base
   private
   def ensure_session_token
     self.session_token ||= generate_session_token
-    self.save
   end
 
   def generate_session_token
     SecureRandom.urlsafe_base64
   end
-  
+
 
 end

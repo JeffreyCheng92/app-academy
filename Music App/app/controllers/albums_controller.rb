@@ -28,8 +28,9 @@ class AlbumsController < ApplicationController
 
   def destroy
     @album = Album.find_by(id: params[:id])
+    @band = @album.band_id
     @album.destroy
-    redirect_to bands_url
+    redirect_to band_url(@band)
   end
 
   private

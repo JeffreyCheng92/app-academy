@@ -5,8 +5,9 @@ class ApplicationController < ActionController::Base
   helper_method :current_user
 
   def current_user
-    user = User.find_by_credentials(params[:user][:email], params[:user][email])
+    user ||= User.find_by_credentials(params[:user][:email],
+                                      params[:user][:email])
     return user ? user : nil
   end
-  
+
 end

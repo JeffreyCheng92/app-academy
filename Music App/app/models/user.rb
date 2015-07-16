@@ -15,7 +15,6 @@ class User < ActiveRecord::Base
   def password=(new_password)
     @password = new_password
     self.password_digest = BCrypt::Password.create(new_password)
-    self.save
   end
 
   def is_password?(password)

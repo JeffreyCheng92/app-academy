@@ -11,7 +11,7 @@
 #
 
 class Album < ActiveRecord::Base
-  validates :band_id, :title, presence: true
+  validates :band_id, :title, :style, presence: true
   validates :style, inclusion: ["STUDIO", "LIVE"]
 
   belongs_to :band

@@ -10,7 +10,8 @@
 #
 
 class Track < ActiveRecord::Base
-  validates :album_id, :name, presence: true
+  validates :album_id, :name, :style, presence: true
+  validates :style, inclusion: ["REGULAR", "BONUS"]
 
   belongs_to :album
   has_one :band, through: :album, source: :band

@@ -18,7 +18,7 @@ class AlbumsController < ApplicationController
 
     if @album.valid?
       @album.save
-      redirect_to band_url(@album.band_id)
+      redirect_to album_url(@album)
     else
       flash.now[:errors] = @album.errors.full_messages
       @bands ||= Band.all

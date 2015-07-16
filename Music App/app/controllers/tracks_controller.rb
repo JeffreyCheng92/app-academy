@@ -7,18 +7,18 @@ class TracksController < ApplicationController
 
   def new
     @track = Track.new
-    @album = Album.find(params[:band_id])
+    @album = Album.find(params[:album_id])
     @albums = Album.all
     render :new
   end
 
   def create
-    @track = Track.new(album_params)
+    @track = Track.new(track_params)
 
 
     if @track.valid?
       @track.save
-      redirect_to band_url(@track.band_id)
+      redirect_to album_url(@track.album_id)
     else
       flash.now[:errors] = @track.errors.full_messages
       @albums ||= Album.all
@@ -28,8 +28,9 @@ class TracksController < ApplicationController
 
   def destroy
     @track = Track.find_by(id: params[:id])
+    @album = @track.album_id
     @track.destroy
-    redirect_to bands_url
+    redirect_to album_url(@album)
   end
 
   private

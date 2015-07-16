@@ -18,7 +18,7 @@ class TracksController < ApplicationController
 
     if @track.valid?
       @track.save
-      redirect_to album_url(@track.album_id)
+      redirect_to track_url(@track)
     else
       flash.now[:errors] = @track.errors.full_messages
       @albums ||= Album.all
@@ -35,6 +35,6 @@ class TracksController < ApplicationController
 
   private
   def track_params
-    params.require(:track).permit(:name, :album_id, :style)
+    params.require(:track).permit(:name, :album_id, :style, :lyrics)
   end
 end

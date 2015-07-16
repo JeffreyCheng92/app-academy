@@ -1,0 +1,12 @@
+<h1><%= @album.title %></h1>
+
+<p> List of Tracks </p>
+
+<ul>
+  <% @album.tracks.each do |track| %>
+  <li> <%= track.name %> </li>
+  <% end %>
+</ul>
+
+<%= button_to "DELETE BAND!?", album_url(@album), method: :delete %>
+<%= button_to "Back", "/band/<%= @album.band_id %>", method: :get %>

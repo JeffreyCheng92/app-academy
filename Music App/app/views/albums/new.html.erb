@@ -1,0 +1,27 @@
+<h1> Add an Album </h1>
+
+<form action="/albums" method="POST">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+
+  <label for="album_band_id">Band</label>
+  <select name="album[band_id]" id="album_band_id">
+    <% @bands.each do |band| %>
+      <option value="<%= band.id %>"
+        <%= "selected" if band.id == @band.id %>><%= band.name %></option>
+    <% end %>
+  </select>
+  <br>
+
+  <label for="album_title">Title</label>
+    <input type="text"
+           name="album[title]"
+           id="album_title"
+           value="<%= @album.title %>">
+
+  <input type="submit" value="Add new Album!">
+
+</form>

@@ -1,0 +1,25 @@
+require 'launchy'
+
+puts "Input your email."
+
+email = gets.chomp.downcase
+#check should go here for duplicate email
+user = User.create!(email: email)
+
+puts "What do you want to do?"
+puts "0. Create shortened URL"
+puts "1. Visit shortened URL"
+
+choice = gets.chomp
+
+if choice == "0"
+  puts "Type in your long URL."
+  long_url = gets.chomp
+  ShortenedUrl.create_for_user_and_long_url!(user, long_url)
+  print "Short url is: "
+  puts ShortenedUrl.where(long_url: long_url).first.short_url
+else
+  puts "Type in shortened URL."
+  short_url = gets.chomp
+  Launchy.open( ShortenedUrl.where(short_url: short_url).first.long_url )
+end

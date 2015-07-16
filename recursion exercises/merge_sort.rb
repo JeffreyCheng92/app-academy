@@ -11,7 +11,6 @@ def merge(left, right)
   results = []
 
   until left.length == 0 || right.length == 0
-  #  p right.first
     if left[0] <= right[0]
       results << left.shift
     else

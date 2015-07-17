@@ -8,6 +8,7 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  style      :string           not null
+#  lyrics     :text             not null
 #
 
 require 'test_helper'

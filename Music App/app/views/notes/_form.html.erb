@@ -1,0 +1,17 @@
+<form action="<%= notes_url %>" method="POST">
+  <input
+     name="authenticity_token"
+     type="hidden"
+     value="<%= form_authenticity_token %>">
+
+  <label for="note_note">Comments</label>
+  <br>
+  <textarea name="note[note]"
+            id="note_note"
+            rows="8"
+            cols="8"><%= @note.note %></textarea>
+  <br>
+  <input type="submit"  value="Post">
+  <br>
+
+</form>

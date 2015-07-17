@@ -1,0 +1,6 @@
+<%= note.user.email %> says...
+<br>
+<%= note.note %>
+<%= (button_to "Delete", note_url(note), method: :delete) if current_user.id == note.user.id %>
+<br>
+<br>

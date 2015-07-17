@@ -17,11 +17,7 @@
 <p>Comments</p>
 <br>
 <% @track.notes.each do |note| %>
-  <%= note.user.email %> says...
-  <br>
-  <%= note.note %>
-  <br>
-  <br>
+  <%= render "notes/note", note: note %>
 <% end %>
 <br>
 <%= render "notes/form", track_id: params[:id] %>

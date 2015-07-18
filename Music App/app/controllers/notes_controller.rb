@@ -11,7 +11,14 @@ class NotesController < ApplicationController
   end
 
   def destroy
-
+    @note = Note.find_by(id: params[:id])
+    @track_id = @note.track_id
+    if current_user.id == @note.user_id
+      @note.destroy
+      redirect_to track_url(@track_id)
+    else
+      head: 403
+    end
   end
 
   private

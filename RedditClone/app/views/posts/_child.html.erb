@@ -1,0 +1,11 @@
+<%= child.author.username %> says:
+<br>
+<%= child.content %>
+<br>
+<%= link_to "view comment", comment_url(child) %>
+<br>
+<% child.comments.each do |comment| %>
+  <%= render "child", child: comment  %>
+  <br>
+<% end %>
+<br>

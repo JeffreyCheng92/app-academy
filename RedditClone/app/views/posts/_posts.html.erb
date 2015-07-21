@@ -1,0 +1,9 @@
+<h3> <%=post.title%> </h3>
+
+<p>
+  <%= post.content %>
+</p>
+
+<p>
+  <%= (link_to "Edit", edit_post_url(post)) if current_user == post.author %>
+</p>

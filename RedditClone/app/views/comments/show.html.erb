@@ -1,0 +1,24 @@
+<%= @comment.author.username %> says:
+<br>
+<%= @comment.content %>
+<br>
+<% @children.each do |child| %>
+  <%= render "child", child: child  %>
+  <br>
+<% end %>
+<br>
+<form action="<%= comments_url%>" method="post">
+  <%= auth_token %>
+
+  <input type="hidden" name="comment[parent_comment_id]" value="<%= @comment.id %>">
+  <input type="hidden" name="comment[post_id]" value="<%= @comment.post_id %>">
+  <input type="hidden" name="comment[commentable_id]" value="<%= @comment.id %>">
+  <input type="hidden" name="comment[commentable_type]" value="Comment">
+
+  <label for="comment_content">Your thoughts</label>
+  <br>
+  <textarea name="comment[content]"></textarea>
+    <br>
+  <input type="submit" value="Comment!">
+</form>
+<br>

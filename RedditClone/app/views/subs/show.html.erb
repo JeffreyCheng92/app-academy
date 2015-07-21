@@ -1,0 +1,23 @@
+<h1><%= @sub.title %></h1>
+
+Description:<br>
+<%= @sub.description %>
+<br>
+<br>
+Posts:
+<ul>
+  <% @posts.each do |post| %>
+    <li><%= link_to post.title, post_url(post) %></li>
+  <% end %>
+</ul>
+
+<p>
+  <%= link_to "New Post", new_sub_post_url(@sub) %>
+  <br>
+  <% if current_user.id == @sub.moderator_id %>
+    <%= (link_to "Edit", edit_sub_url(@sub)) %>
+    <br>
+    <%= button_to "Delete", sub_url(@sub), method: :delete %>
+  <% end %>
+  <%= link_to "Back", subs_url %>
+</p>

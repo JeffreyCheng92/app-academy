@@ -1,0 +1,20 @@
+<% header = @sub.persisted? ? "Edit" : "New sub form!" %>
+<% action = @sub.persisted? ? sub_url(@sub) : subs_url %>
+<% method = @sub.persisted? ? "patch" : "post" %>
+<% button = @sub.persisted? ? "Update" : "Submit" %>
+
+<h1><%= header %></h1>
+<form action="<%= action %>" method="post">
+  <input type="hidden" name="_method" method="<%= method %>">
+  <%= auth_token %>
+
+  <label for="sub_title">Title</label>
+  <input type="text" name="sub[title]" value="<%= @sub.title %>" id="sub_title">
+
+  <br>
+  <label for="sub_description">Description</label><br>
+  <textarea name="sub[description]" rows="20" cols="40"><%= @sub.description %></textarea>
+
+  <br>
+  <input type="submit" value="<%= button %>">
+</form>

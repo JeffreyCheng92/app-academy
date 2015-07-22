@@ -8,33 +8,33 @@ module Associatable
     through_options = assoc_options[through_name]
 
     define_method(name) do
-      source_options = through_options.model_class.assoc_options[source_name]
+      through_options = self.class.assoc_options[through_name]
+      source_options =
+        through_options.model_class.assoc_options[source_name]
 
-      cat_foreign_key = through_options.foreign_key
-      cat_f_key_id = self.send(cat_foreign_key)
+      through_table = through_options.table_name
+      through_pk = through_options.primary_key
+      through_fk = through_options.foreign_key
 
-      owner_p_key = through_options.primary_key
+      source_table = source_options.table_name
+      source_pk = source_options.primary_key
+      source_fk = source_options.foreign_key
 
-      owner_f_key = through_options.foreign_key
-      owner_f_key_id = through_name.send(owner_f_key)
-
-      house_p_key = source_options.primary_key
-
-      query = DBConnection.execute(<<-SQL)
+      key_val = self.send(through_fk)
+      results = DBConnection.execute(<<-SQL, key_val)
         SELECT
-          #{source_options.model_class.table_name}.*
+          #{source_table}.*
         FROM
-          #{through_options.model_class.table_name} AS human
+          #{through_table}
         JOIN
-          #{source_options.model_class.table_name} AS house
+          #{source_table}
         ON
-          human.#{owner_f_key_id} = house.#{house_p_key}
+          #{through_table}.#{source_fk} = #{source_table}.#{source_pk}
         WHERE
-          #{self.model_class.table_name}.#{cat_f_key_id} =
-            human.#{owner_p_key}
+          #{through_table}.#{through_pk} = ?
       SQL
 
-      query
+      source_options.model_class.parse_all(results).first
     end
 
   end

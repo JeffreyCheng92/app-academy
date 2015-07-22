@@ -17,18 +17,11 @@ module Phase6
     # use pattern to pull out route params (save for later?)
     # instantiate controller and call controller action
     def run(req, res)
-      # puts "\n\n\n"
-      # p req.path
-      # p pattern
-      # puts "\n\n\n\n"
-
-      # regexp = Regexp.new(req.path)
-      #
-      # params = {}
-      #
-      # query_string =
-
-      # @controller_class.new(req, res, params).invoke_action(action_name)
+      route_params = {}
+      match_data = pattern.match(req.path)
+      match_data.names.each { |name| route_params[name] = match_data[name] }
+      
+      @controller_class.new(req, res, route_params).invoke_action(action_name)
     end
   end
 
@@ -47,6 +40,7 @@ module Phase6
     # evaluate the proc in the context of the instance
     # for syntactic sugar :)
     def draw(&proc)
+      self.instance_eval(&proc)
     end
 
     # make each of these methods that
@@ -64,6 +58,11 @@ module Phase6
 
     # either throw 404 or call run on a matched route
     def run(req, res)
+      if match(req)
+        match(req).run(req, res)
+      else
+        res.status = 404
+      end
     end
   end
 end

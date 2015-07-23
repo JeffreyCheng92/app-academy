@@ -40,8 +40,6 @@ class CatsController < Phase7::ControllerBase
     @cat = Cat.new(params["cat"])
     if @cat.save
       flash[:errors] = ["Cat successfully created!"]
-      p flash
-      # debugger
       redirect_to("/cats")
     else
       flash.now[:errors] = ["Bad cat"]

@@ -1,0 +1,32 @@
+/* PHASE 5: Cats */
+
+.content-header {
+  position: relative;
+  background-image: url("../../shared/img/vip-dogs.png");
+  background-size: cover;
+  height: 300px;
+  line-height: 1;
+}
+
+.content-header > h1 {
+  bottom: 15px;
+  position: absolute;
+  left: 25%;
+  font-size: 36px;
+  color: #fff;
+  text-shadow: 1px 1px 2px black;
+}
+.content-header-button {
+  font-weight: bold;
+  position: absolute;
+  bottom: 15px;
+  right: 20px;
+  border: 1px solid black;
+  border-radius: 5px;
+  background: #fff;
+  padding: 10px 15px;
+}
+
+.content-header-button:hover {
+  background: #aaa;
+}

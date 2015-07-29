@@ -1,0 +1,11 @@
+/* PHASE 8: Thumbs */
+a.thumb:before {
+  content: attr(title);
+  display: none
+}
+
+a.thumb:before:hover {
+  content: attr(title);
+  display: block;
+  position: absolute;
+}

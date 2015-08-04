@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Cool Website</title>
+    <script src="./jquery-2.1.1.js"></script>
+    <script src="./carousels.js"></script>
+    <link href="./carousels.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css">
+
+  </head>
+
+  <script>
+    $(function() {
+      $('.carousel').carousel();
+    })
+  </script>
+
+  <body>
+
+    <!-- <ul class='tabs'></ul> -->
+
+    <div class="carousel">
+      <div class="items">
+        <img src="http://placecorgi.com/300/300" />
+        <img src="http://placecorgi.com/200/200" />
+        <img src="http://placekitten.com/g/260/180" />
+        <img src="http://placecorgi.com/200/200" />
+      </div>
+
+      <a href="javascript:void(0)" class="slide-right">Prev</a>
+      <a href="javascript:void(0)" class="slide-left">Next</a>
+    </div>
+
+  </body>
+</html>

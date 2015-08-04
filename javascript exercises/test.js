@@ -264,12 +264,12 @@ function subsets(array) {
   if (array.length === 0) {
     return [[]];
   }
-  var number = array[0]
-  var subs = subsets(array.slice(1, array.length))
+  var number = array[0];
+  var subs = subsets(array.slice(1));
 
   for (var i = 0; i < array.length; i++) {
     new_arr = subs[i].concat([number]);
     subs.push(new_arr);
   }
-  return subs
+  return subs;
 }

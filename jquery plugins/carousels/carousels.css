@@ -1,0 +1,51 @@
+div.carousel {
+  height: 200px;
+  width: 200px;
+  position: relative;
+  margin: auto;
+}
+
+/*.items {
+  overflow: hidden;
+}*/
+
+div.items {
+  height: 200px;
+  width: 200px;
+  overflow: hidden;
+  position: relative;
+
+}
+
+.items > img {
+  display: none;
+  height: 100%;
+  width: 100%;
+}
+
+.items > img.active {
+  display: block;
+  position: absolute;
+  left: 0%;
+  transition-property: left;
+  transition-duration: 1s;
+}
+
+img.active.right {
+  position: absolute;
+  transition-property: left;
+  transition-duration: 1s;
+  left: 100%;
+}
+
+img.active.left {
+  position: absolute;
+  transition-property: left;
+  transition-duration: 1s;
+  left: -100%;
+}
+
+a {
+  margin-top: 300px;
+  z-index: 1;
+}

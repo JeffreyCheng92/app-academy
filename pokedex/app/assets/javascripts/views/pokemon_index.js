@@ -28,14 +28,20 @@ Pokedex.Views.PokemonIndex = Backbone.View.extend({
 
   selectPokemonFromList: function (event) {
     var id = $(event.currentTarget).data('id');
-    var poke = this.collection.get(id);
-    var view = new Pokedex.Views.PokemonDetail({model: poke});
-    poke.fetch(); // get the toys as well
-    $("#pokedex .pokemon-detail").html(view.$el);
+    Backbone.history.navigate('/pokemon/' + id, { trigger: true });
+
+    // var poke = this.collection.get(id);
+    // var view = new Pokedex.Views.PokemonDetail({model: poke});
+    // poke.fetch(); // get the toys as well
+    // $("#pokedex .pokemon-detail").html(view.$el);
   },
 
 
-  refreshPokemon: function () {
-    this.collection.fetch();
+  refreshPokemon: function (callback) {
+    this.collection.fetch({
+      success: function() {
+        callback && callback();
+      }
+    });
   }
 });

@@ -4,20 +4,29 @@ Pokedex.Routers.Router = Backbone.Router.extend({
     "pokemon/:id": 'show'
   },
 
-  index: function () {
-    var indexView = new Pokedex.Views.PokemonIndex({
+  index: function (callback) {
+    this._indexView = new Pokedex.Views.PokemonIndex({
       collection: new Pokedex.Collections.Pokemon()
     });
 
-    indexView.refreshPokemon();
-    $("#pokedex .pokemon-list").html(indexView.$el);
+    this._indexView.refreshPokemon(callback);
+    $("#pokedex .pokemon-list").html(this._indexView.$el);
   },
 
-  show: function(id) {
-    var pokemon = Pokedex.Models.Pokemon.get(id);
-    var showView = new Pokedex.Views.PokemonDetail();
+  show: function(id, callback) {
+    if (this._indexView === undefined ) {
+      this.index(this.show.bind(this, id, callback));
+      return;
+    }
 
-    $("#pokedex .pokemon-detail").html(showView.$el);
+    var pokemon = this._indexView.collection.get(id);
+    pokemon.fetch({
+      success: function () { callback && callback(); }
+    });
+
+    this._showView = new Pokedex.Views.PokemonDetail( {model: pokemon} );
+
+    $("#pokedex .pokemon-detail").html(this._showView.$el);
 
   }
 });

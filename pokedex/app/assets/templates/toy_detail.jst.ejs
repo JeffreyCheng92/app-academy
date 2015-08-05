@@ -1,0 +1,20 @@
+<div class='detail'>
+  <h3>Toy Details</h3>
+
+  <p>
+    <img src='<%= toy.escape('image_url')%>'> <br>
+    Name: <%=toy.escape('name')%> <br>
+    Happiness: <%=toy.escape('happiness')%> <br>
+    Price: <%=toy.escape('price')%>
+  </p>
+
+  <select class="owner-change" name="">
+    <% pokes.forEach(function(poke) { %>
+
+      <option value="<%=parseInt(poke.escape("id"))%>">
+        <%= poke.escape("name") %>
+      </option>
+
+    <% }) %>
+  </select>
+</div>

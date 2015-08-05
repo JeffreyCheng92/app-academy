@@ -25,8 +25,7 @@ Pokedex.Views.PokemonDetail = Backbone.View.extend({
 
   selectToyFromList: function (event) {
     var toyId = $(event.currentTarget).data("toy-id");
-    var toy = this.model.toys().get(toyId);
-    var view = new Pokedex.Views.ToyDetail({model: toy});
-    $("#pokedex .toy-detail").html(view.render().$el);
+    var route = 'pokemon/' + this.model.id + '/toys/' + toyId;
+    Backbone.history.navigate(route, {trigger: true});
   }
 });

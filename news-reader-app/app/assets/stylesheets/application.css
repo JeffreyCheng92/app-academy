@@ -1,0 +1,116 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or vendor/assets/stylesheets of plugins, if any, can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the top of the
+ * compiled file, but it's generally better to create a new file per style scope.
+ *
+ *= require_self
+ *= require_tree .
+ */
+
+html {
+  background-repeat: no-repeat;
+  background: -moz-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 1%, rgba(153,153,153,1) 38%, rgba(28,28,28,1) 96%, rgba(28,28,28,1) 96%); /* FF3.6+ */
+  background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(1%,rgba(255,255,255,1)), color-stop(38%,rgba(153,153,153,1)), color-stop(96%,rgba(28,28,28,1)), color-stop(96%,rgba(28,28,28,1))); /* Chrome,Safari4+ */
+  background: -webkit-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 1%,rgba(153,153,153,1) 38%,rgba(28,28,28,1) 96%,rgba(28,28,28,1) 96%); /* Chrome10+,Safari5.1+ */
+  background: -o-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 1%,rgba(153,153,153,1) 38%,rgba(28,28,28,1) 96%,rgba(28,28,28,1) 96%); /* Opera 12+ */
+  background: -ms-radial-gradient(center, ellipse cover, rgba(255,255,255,1) 1%,rgba(153,153,153,1) 38%,rgba(28,28,28,1) 96%,rgba(28,28,28,1) 96%); /* IE10+ */
+  background: radial-gradient(ellipse at center, rgba(255,255,255,1) 1%,rgba(153,153,153,1) 38%,rgba(28,28,28,1) 96%,rgba(28,28,28,1) 96%); /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#1c1c1c',GradientType=1 );
+  background-size: cover;
+}
+
+ body {
+   font-family: sans-serif;
+ }
+
+ .header {
+   /*display: block;*/
+   /*text-align: center;*/
+   width: 80%;
+   margin: 0 auto 0 ;
+   border-bottom: 2px solid grey;
+   background-color: #80919C;
+ }
+
+ .header h1 {
+   padding: 5px;
+ }
+
+ .header a {
+   color: white;
+ }
+
+ #content {
+   display: block;
+   width: 80%;
+   height: 500px;
+   margin: auto;
+   color: white;
+   /*background-color: #361010;*/
+   overflow-y: auto;
+   overflow-x: auto;
+   background: rgba(59,67,71,80)
+ }
+
+ #content a {
+   color: white;
+ }
+
+ #content a:visited {
+   color: lightgrey;
+ }
+
+ #content li {
+   padding: 10px;
+   list-style-type:none;
+ }
+
+ #content button {
+    color: white;
+    background-color: blue;
+    padding: 5px;
+    /*position: relative;*/
+    text-align: center;
+    font-size: 10px;
+    font-weight: bold;
+    box-shadow:
+      1px 1px 0 0 #014D06,
+      2px 2px 0 0 #014D06,
+      3px 3px 3px 0 #000000;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -webkit-transition: background-color 0.2s linear;
+    transition: background-color 0.2s linear;
+ }
+
+ #content button:active {
+   box-shadow: 1px 1px 5px 0 #000000;
+    -webkit-box-shadow: 1px 1px 5px 0 #000000;
+    -moz-box-shadow: 1px 1px 5px 0 #000000;
+    top: 4px;
+    left: 4px;
+ }
+
+  #content button:hover {
+    background-color: red;
+    color: black;
+  }
+
+ .footer {
+   margin: auto;
+   width: 80%;
+ }
+
+ .footer .footer-link {
+   color: white;
+ }
+
+ .footer .footer-link:visited {
+   color: white;
+ }
